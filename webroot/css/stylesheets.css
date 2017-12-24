@@ -1,0 +1,105 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-family: Verdana, sans-serif;
+  
+}
+.container {
+  width: 380px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 45px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+.after-eader {
+  border-bottom: 2px solid black;
+
+
+}
+
+ul > li {
+  padding: 3px 0;
+}
+li {
+  margin: 0 auto;
+  box-sizing: border-box;
+  float: left;
+}
+li img {
+  text-align: center;
+  width: 70%;
+}
+li a {
+  margin-bottom: 4px;
+}
+
+header {
+  text-align: center;
+  background: green;
+  height: 30px;
+  line-height: 30px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
+.fs12 {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.pull-right {
+  float: right;
+}
+
+.input {
+  overflow: hidden;
+  font-size: 14px;
+  padding-bottom: 10px;
+}
+
+.input label {
+  width: 100px;
+  float: left;
+}
+
+.input input, .input textarea {
+  float: left;
+  width: 250px;
+  padding: 3px;
+}
+
+button {
+  margin-left: 100px;
+  width: 50px;
+  padding: 5px;
+}
+
+
+.error-message {
+  clear: both;
+  font-size: 18px;
+  color: red;
+}
+
+
+.message {
+  text-align: center;
+  padding: 5px;
+  color: green;
+  background: Lavender;
+}
+
+.hidden {
+  display: none;
+}
+
+.footer-title {
+  text-align: center;
+  font-size: 28px;
+  padding:8px 4px;
+
+}
