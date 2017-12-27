@@ -33,7 +33,11 @@ bin/cake server -p 8765
 
 Then visit `http://localhost:8765` to see the welcome page.
 
+<<<<<<< HEAD
 ## Update
+=======
+## Updates
+>>>>>>> origin/master
 
 Since this skeleton is a starting point for your application and various files
 would have been modified as per your needs, there isn't a way to provide
