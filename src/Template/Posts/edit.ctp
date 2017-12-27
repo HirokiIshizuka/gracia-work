@@ -1,4 +1,3 @@
-//edit.ctp
 <?php
 $this->assign('title', 'edit');
 ?>

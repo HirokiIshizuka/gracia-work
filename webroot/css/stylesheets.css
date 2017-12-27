@@ -2,11 +2,15 @@ body {
   padding: 0;
   margin: 0;
   font-size: 16px;
-  font-family: Verdana, sans-serif;
-  
+  color: #333;
+  font-family: "メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
+  line-height: 150%;
+  background-color: #fff;
+  height: auto;
+  overflow: auto;
 }
 .container {
-  width: 380px;
+  width: 600px;
   margin: 0 auto;
 }
 
@@ -17,24 +21,27 @@ h1 {
 }
 .after-eader {
   border-bottom: 2px solid black;
-
-
 }
 
-ul > li {
-  padding: 3px 0;
-}
-li {
+.product-container {
+  width: 50%;
   margin: 0 auto;
   box-sizing: border-box;
+  overflow: hidden;
   float: left;
+  display: inline;
+  height: 400px;
+  padding: 5px 10px;
+
 }
-li img {
-  text-align: center;
-  width: 70%;
+
+.product-container img {
+    width: 100%;
+    height: auto;
+
 }
-li a {
-  margin-bottom: 4px;
+.clear-fix  {
+  clear: both;
 }
 
 header {
@@ -101,5 +108,13 @@ button {
   text-align: center;
   font-size: 28px;
   padding:8px 4px;
+}
 
+.view-img img {
+  width: 100%;
+  height: auto;
+}
+.price-container {
+  font-size: 30px;
+  padding-bottom: 8px;
 }
