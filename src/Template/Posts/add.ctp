@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', 'Add New');
+$this->assign('title', '記事追加');
 ?>
 
 <h2>
@@ -8,9 +8,9 @@ $this->assign('title', 'Add New');
 </h2>
 
 <?= $this->Form->create($post); ?>
-<?= $this->Form->input('商品名'); ?>
-<?= $this->Form->input('商品詳細', ['rows'=>10]); ?>
-<?= $this->Form->input('商品イメージ'); ?>
-<?= $this->Form->input('価格'); ?>
+<?= $this->Form->input('title'); ?>
+<?= $this->Form->input('description', ['rows'=>'3']); ?>
+<?= $this->Form->input('image'); ?>
+<?= $this->Form->input('price'); ?>
 <?= $this->Form->button('追加'); ?>
 <?= $this->Form->end(); ?>

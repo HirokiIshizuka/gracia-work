@@ -10,19 +10,22 @@ class PostsTable extends Table
   public function initialize(array $config)
   {
     $this->addBehavior('Timestamp');
+    $this->hasMany('Comments', [
+      'dependent' => true
+    ]);
   }
 
   public function validationDefault(Validator $validator)
   {
     $validator
-      ->notEmpty('商品名')
-      ->requirePresence('商品名')
-      ->notEmpty('商品詳細')
-      ->requirePresence('商品詳細')
-      ->add('商品詳細', [
+      ->notEmpty('title')
+      ->requirePresence('title')
+      ->notEmpty('description')
+      ->requirePresence('description')
+      ->add('description', [
         'length' => [
-          'rule' => ['minLength', 15],
-          'message' => '商品詳細は１５字以上書いてください'
+          'rule' => ['minLength', 5],
+          'message' => '記事詳細は５字以上にしてください'
         ]
       ]);
     return $validator;
