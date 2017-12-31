@@ -3,7 +3,7 @@ $this->assign('title', 'edit');
 ?>
 
 <h1>
-  <?= $this->Html->link('edit', ['action'=>'index'], ['class'=>['pull-right', 'fs12']]); ?>
+  <?= $this->Html->link('戻る', ['action'=>'index'], ['class'=>['pull-right', 'fs12']]); ?>
 </h1>
 
 <?= $this->Form->create($post); ?>
