@@ -5,9 +5,15 @@ Tanp
   </h1>
   <p>ギフトを最高の体験に</p>
 </div>
-
+<div class="content-bg">
+<?php foreach ($parents as $parent) : ?>
+  <ul>
+    <li><?= h($parent->name)?></li>
+  </ul>
+</div>
+<?php endforeach; ?>
+<div class="content-bg">
   <?php foreach ($posts as $post) : ?>
-
     <div class="product-container">
       <img src="<?= $post->image?>"  >
       <a href="<?= $this->Url->build(['action'=>'view', $post->id]); ?>">
@@ -17,8 +23,8 @@ Tanp
       </div>
     </a>
   </div>
-    <?php endforeach; ?>
-
+</div>
+<?php endforeach; ?>
 <div class="clear-fix"></div>
 
 

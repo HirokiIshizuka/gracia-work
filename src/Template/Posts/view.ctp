@@ -6,7 +6,7 @@ $this->assign('title', 'PRODUCTS Detail');
   <?= $this->Html->link('戻る', ['action'=>'index'], ['class'=>['pull-right', 'fs12']]); ?>
   <?= h($post->title); ?>
 </h2>
-<div class="">
+<div class="view-detail">
   <div class="view-img">
     <img src="<?= $post->image ?>">
   </div>
@@ -17,6 +17,4 @@ $this->assign('title', 'PRODUCTS Detail');
     <?= h($post->description); ?>
   </div>
 </div>
-<div class="view-img">
-
 <p><?= nl2br(h($post->body)); ?></p>

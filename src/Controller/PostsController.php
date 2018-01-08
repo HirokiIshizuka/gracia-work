@@ -1,13 +1,18 @@
 <?php
-
+//PostsController
 namespace App\Controller;
 
 class PostsController extends AppController
 {
+  public $uses=array('Parents');
+  public $helpers=array('Html','Form');
   public function index()
   {
     $posts = $this->Posts->find('all');
     $this->set(compact('posts'));
+    $this->loadModel('parents');
+    
+    $this->set(compact('parents'));
   }
 
 
@@ -16,6 +21,7 @@ class PostsController extends AppController
   {
     $post = $this->Posts->get($id);
     $this->set(compact('post'));
+    $this->set(compact('parents'));
   }
 
 
@@ -28,11 +34,11 @@ class PostsController extends AppController
         $this->Flash->success('追加完了!');
         return $this->redirect(['action'=>'index']);
       } else {
-        // error
         $this->Flash->error('追加失敗!');
       }
     }
     $this->set(compact('post'));
+    $this->set(compact('parent'));
   }
 
 
@@ -52,4 +58,5 @@ class PostsController extends AppController
     }
     $this->set(compact('post'));
   }
+
  }

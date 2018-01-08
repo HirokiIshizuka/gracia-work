@@ -13,6 +13,7 @@ class PostsTable extends Table
     $this->hasMany('Comments', [
       'dependent' => true
     ]);
+     $this->belongsTo('Parents');
   }
 
   public function validationDefault(Validator $validator)

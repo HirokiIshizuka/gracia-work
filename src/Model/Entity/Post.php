@@ -1,40 +1,35 @@
 <?php
 namespace App\Model\Entity;
-
 use Cake\ORM\Entity;
-
-class Article extends Entity
+/**
+ * Brand Entity
+ *
+ * @property int $id
+ * @property int $name
+ */
+class Product extends Entity
 {
-
-public function add()
-{
- $post = $this->Posts->newEntity();
- if ($this->request->is('post')) {
-    $post = $this->Posts->patchEntity($post, $this->request->data);
-    if ($this->Posts->save($post)) {
-      $this->Flash->success('追加完了');
-      return $this->redirect(['action'=>'index']);
-    } else {
-      // error
+    protected $_accessible = [
+        '*' => true,
+        'id' => false
+    ];
+    public function getDeliveryDate($i) {
+        $weekList = array("日", "月", "火", "水", "木", "金", "土");
+        if (!isset($i)) {
+           $i = 5;
+        }
+        if ($weekList[date("w", strtotime("+{$i}day"))] == "土") {
+            $j = $i + 2;
+            $myDate = date("m/d", strtotime("{$j}day"));
+            $myDate .= "(".$weekList[date("w", strtotime("+{$j}day"))].")";
+        } elseif ($weekList[date("w", strtotime("+{$i}day"))] == "日") {
+            $j = $i + 1;
+            $myDate = date("m/d", strtotime("{$j}day"));
+            $myDate .= "(".$weekList[date("w", strtotime("+{$j}day"))].")";
+        } else {
+            $myDate = date("m/d", strtotime("{$i}day"));
+            $myDate .= "(".$weekList[date("w", strtotime("+{$i}day"))].")";
+        }
+        echo $myDate;
     }
-  }
- $this->set(compact('post'));
-}
-
-//postsController
-public function edit($id = null)
-{
-  $post = $this->Posts->get($id);
-  if ($this->request->is(['post', 'patch', 'put'])) {
-    $post = $this->Posts->patchEntity($post, $this->request->getData());
-    if ($this->Posts->save($post)) {
-      $this->Flash->success('編集しました');
-      return $this->redirect(['action'=>'index']);
-    } else {
-      // error
-      $this->Flash->error('編集に失敗しました');
-    }
-  }
-  $this->set(compact('post'));
-}
 }
