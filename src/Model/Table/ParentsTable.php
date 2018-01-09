@@ -11,3 +11,4 @@ class ParentsTable extends Table
        $this->hasMany('Posts');
    }
 }
+?>

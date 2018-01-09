@@ -1,8 +1,9 @@
 <?php
 //ParentsController
 namespace App\Controller;
-
+use Cake\ORM\TableRegistry;
 class ParentsController extends AppController
+
 {
   public function index()
   {
@@ -11,7 +12,13 @@ class ParentsController extends AppController
   }
   public function view($id = null)
   {
-    $parent = $this->Parents->get($id);
-    $this->set(compact('parent'));
+            $this->loadModel('Posts');
+            $posts = $this->Posts->find('all', [
+               'conditions' => ['Posts.parent_id' => $id]
+           ]
+           );
+           $this->set(compact('posts'));
+           $parent = $this->Parents->get($id);
+           $this->set(compact('parent'));
   }
-}
+  }
