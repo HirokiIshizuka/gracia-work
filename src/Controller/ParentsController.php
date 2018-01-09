@@ -11,7 +11,7 @@ class ParentsController extends AppController
   }
   public function view($id = null)
   {
-    $parent = $this->Parents>get($id);
-    $this->set(compact('parents'));
+    $parent = $this->Parents->get($id);
+    $this->set(compact('parent'));
   }
 }

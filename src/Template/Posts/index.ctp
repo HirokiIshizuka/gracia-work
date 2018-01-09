@@ -8,10 +8,13 @@ Tanp
 <div class="content-bg">
 <?php foreach ($parents as $parent) : ?>
   <ul>
-    <li><?= h($parent->name)?></li>
+    <li>
+      <a href="/parents/view/<?= $parent->id ?>"><?= $parent->name ?></a>
+    </li>
   </ul>
+  <?php endforeach; ?>
 </div>
-<?php endforeach; ?>
+
 <div class="content-bg">
   <?php foreach ($posts as $post) : ?>
     <div class="product-container">
@@ -23,8 +26,8 @@ Tanp
       </div>
     </a>
   </div>
+  <?php endforeach; ?>
 </div>
-<?php endforeach; ?>
 <div class="clear-fix"></div>
 
 

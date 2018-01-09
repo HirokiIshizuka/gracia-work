@@ -21,7 +21,6 @@ class PostsController extends AppController
   {
     $post = $this->Posts->get($id);
     $this->set(compact('post'));
-    $this->set(compact('parents'));
   }
 
 

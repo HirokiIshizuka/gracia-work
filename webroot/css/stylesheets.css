@@ -10,14 +10,16 @@ body {
   overflow: auto;
 }
 .container {
-  width: 600px;
+  width: 1000px;
   margin: 0 auto;
 }
 
-.content-bg ul {
-  list-style:none;
+.content-bg {
+  float: left;
 }
-
+.content-bg ul{
+  list-style: none;
+}
 h1 {
   font-size: 45px;
   padding-bottom: 5px;
