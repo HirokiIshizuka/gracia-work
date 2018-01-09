@@ -10,8 +10,8 @@ class PostsController extends AppController
   {
     $posts = $this->Posts->find('all');
     $this->set(compact('posts'));
-    $this->loadModel('parents');
-    
+    $this->loadModel('Parents');
+    $parents = $this->Parents->find('all');
     $this->set(compact('parents'));
   }
 

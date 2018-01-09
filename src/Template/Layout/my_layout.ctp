@@ -8,6 +8,7 @@
         <?= $this->fetch('price') ?>
         <?= $this->fetch('description')?>
         <?= $this->fetch('image') ?>
+        <?= $this->fetch('name') ?>
     </title>
     <?= $this->Html->css('stylesheets.css') ?>
 </head>
