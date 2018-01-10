@@ -1,7 +1,6 @@
 <?php
 //PostsController
 namespace App\Controller;
-
 class PostsController extends AppController
 {
   public $uses=array('Parents');
@@ -37,9 +36,10 @@ class PostsController extends AppController
       }
     }
     $this->set(compact('post'));
-    $this->set(compact('parent'));
+    $this->loadModel('Parents');
+       $parents = $this->Parents->find('all');
+       $this->set(compact('parents'));
   }
-
 
 
 //postsController
@@ -56,6 +56,9 @@ class PostsController extends AppController
       }
     }
     $this->set(compact('post'));
+    $this->loadModel('Parents');
+       $parents = $this->Parents->find('all');
+       $this->set(compact('parents'));
   }
 
  }
