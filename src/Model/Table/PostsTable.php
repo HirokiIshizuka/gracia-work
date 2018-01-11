@@ -17,19 +17,5 @@ class PostsTable extends Table
      $this->hasMany('Items');
   }
 
-  public function validationDefault(Validator $validator)
-  {
-    $validator
-      ->notEmpty('title')
-      ->requirePresence('title')
-      ->notEmpty('description')
-      ->requirePresence('description')
-      ->add('description', [
-        'length' => [
-          'rule' => ['minLength', 5],
-          'message' => '記事詳細は５字以上にしてください'
-        ]
-      ]);
-    return $validator;
-  }
+
 }

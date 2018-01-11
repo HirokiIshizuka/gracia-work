@@ -3,8 +3,6 @@
 namespace App\Controller;
 class PostsController extends AppController
 {
-  public $uses=array('Parents');
-  public $helpers=array('Html','Form');
   public function index()
   {
     $posts = $this->Posts->find('all');
@@ -25,43 +23,39 @@ class PostsController extends AppController
 
   public function add()
   {
-    $post = $this->Posts->newEntity();
-    if ($this->request->is('post')) {
-      $post = $this->Posts->patchEntity($post, $this->request->data);
-      if ($this->Posts->save($post)) {
-        $this->Flash->success('追加完了!');
-        return $this->redirect(['action'=>'index']);
-      } else {
-        $this->Flash->error('追加失敗!');
-      }
-    }
-    $this->set(compact('post'));
-    $this->loadModel('Parents');
-       $parents = $this->Parents->find('all');
-       $this->set(compact('parents'));
-
-    $this->loadModel('Items');
-  }
+        $post = $this->Posts->newEntity();
+        $this->Posts->save($post);
+        // $this->redirect(['action'=>'edit',$post->id]);
+        $this->set(compact('post'));
+        $this->loadModel('Parents');
+        $parents = $this->Parents->find('all');
+        $this->set(compact('parents'));
+        $this->loadModel('Items');
+   }
 
 
 //postsController
-    public function edit($id = null)
+    public function edit($id)
   {
-    $post = $this->Posts->get($id);
-    if ($this->request->is(['post', 'patch', 'put'])) {
-      $post = $this->Posts->patchEntity($post, $this->request->getData());
-      if ($this->Posts->save($post)) {
-        $this->Flash->success('編集しました');
-        return $this->redirect(['action'=>'index']);
-      } else {
-        $this->Flash->error('編集に失敗しました');
-      }
-    }
-    $this->set(compact('post'));
-    $this->loadModel('Parents');
-       $parents = $this->Parents->find('all');
-       $this->set(compact('parents'));
-    $this->loadModel('Items');
+        $post = $this->Posts->get($id);
+        $this->set(compact('post'));
+
+        $this->loadModel('Parents');
+        $parents = $this->Parents->find('all');
+        $this->set(compact('parents'));
+        $this->loadModel('Items');
+  }
+
+  public function save() {
+  	     $this->autoRender = FALSE;
+  	      if ($this->request->is('ajax')) {
+  		   $id = $_POST['id'];
+  		   $post = $this->Posts->get($id);
+  		   $post = $this->Posts->patchEntity($post, $this->request->getData());
+  		   $this->Posts->save($post);
+  		exit;
+  	}
+  	return;
   }
 
  }
