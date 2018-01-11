@@ -16,8 +16,6 @@ class ParentsController extends AppController
            $this->set(compact('posts'));
            $parent = $this->Parents->get($id);
            $this->set(compact('parent'));
-           $post = $this->Posts->find('all', [
-              'conditions' => ['Posts.parent_id' => $id]
-            ]);
+        
   }
 }

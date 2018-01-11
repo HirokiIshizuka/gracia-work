@@ -39,6 +39,8 @@ class PostsController extends AppController
     $this->loadModel('Parents');
        $parents = $this->Parents->find('all');
        $this->set(compact('parents'));
+
+    $this->loadModel('Items');
   }
 
 
@@ -59,6 +61,7 @@ class PostsController extends AppController
     $this->loadModel('Parents');
        $parents = $this->Parents->find('all');
        $this->set(compact('parents'));
+    $this->loadModel('Items');
   }
 
  }

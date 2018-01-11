@@ -19,5 +19,32 @@ $this->assign('title', '記事追加');
                                         value="<?= $parent->id; ?>" <?= ($parent->id == $post->parent_id) ? "selected" : "" ?>><?= $parent->name; ?></option>
                             <?php endforeach; ?>
                         </select>
-<?= $this->Form->button('追加'); ?>
 <?= $this->Form->end(); ?>
+<button id="ajax">ajax</button>
+   <div class="result"></div>
+   <script type="text/javascript">
+   $(document).on('click','.add_item', function() {
+    var post_id = ;
+    var content = ;
+    e.preventDefault();
+    $.ajax(
+        {
+            type: "POST",
+            url: "http://192.168.33.10:8000/items/add",
+            data: {
+                "post_id": post_id,
+                "content": content
+            },
+            dataType: "text",
+            success: function (dom)
+            {
+                //保存完了
+                //ここで、返り値（dom）を描画する
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) //通信失敗
+            {
+                alert('処理できませんでした');
+            }
+        });
+});
+ </script>

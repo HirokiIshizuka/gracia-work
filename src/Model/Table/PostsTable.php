@@ -14,6 +14,7 @@ class PostsTable extends Table
       'dependent' => true
     ]);
      $this->belongsTo('Parents');
+     $this->hasMany('Items');
   }
 
   public function validationDefault(Validator $validator)
