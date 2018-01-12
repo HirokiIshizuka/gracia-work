@@ -24,13 +24,17 @@ class PostsController extends AppController
   public function add()
   {
         $post = $this->Posts->newEntity();
+        $post->title = "";
         $this->Posts->save($post);
-        // $this->redirect(['action'=>'edit',$post->id]);
+        $this->redirect(['action'=>'edit',$post->id]);
         $this->set(compact('post'));
         $this->loadModel('Parents');
         $parents = $this->Parents->find('all');
         $this->set(compact('parents'));
         $this->loadModel('Items');
+        $item =$this->Items->newEntity();
+        $this->Items->save($item);
+        $this->set(compact('item'));
    }
 
 
@@ -39,23 +43,41 @@ class PostsController extends AppController
   {
         $post = $this->Posts->get($id);
         $this->set(compact('post'));
-
         $this->loadModel('Parents');
         $parents = $this->Parents->find('all');
         $this->set(compact('parents'));
         $this->loadModel('Items');
+        $item = $this ->Items->find('all');
+        $this->set(compact('item'));
+
   }
 
   public function save() {
-  	     $this->autoRender = FALSE;
-  	      if ($this->request->is('ajax')) {
+     $this->autoRender = FALSE;
+    if ($this->request->is('ajax')) {
   		   $id = $_POST['id'];
   		   $post = $this->Posts->get($id);
   		   $post = $this->Posts->patchEntity($post, $this->request->getData());
   		   $this->Posts->save($post);
+
   		exit;
   	}
   	return;
   }
+  public function delete(){
+    if($this->request->is('ajax')) {
+        if($this->Post->delete($id)) {
+            $this->autoRender = false;
+            $this->autoLayout = false;
+            $response = array('id' => $id);
+            $this->header('Content-Type: application/json');
+            echo json_encode($response);
+            exit();
+        };}
+  }
+
+
+
+
 
  }

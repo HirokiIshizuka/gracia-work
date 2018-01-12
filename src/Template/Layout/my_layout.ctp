@@ -11,6 +11,7 @@
         <?= $this->fetch('name') ?>
     </title>
     <?= $this->Html->css('stylesheets.css') ?>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
     <?= $this->element('my_header') ?>
