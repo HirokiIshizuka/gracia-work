@@ -11,17 +11,18 @@ class ItemsController extends AppController
        		    $item = $this->Items->newEntity();
        		    $item = $this->Items->patchEntity($item, $this->request->getData());
        		    $this->Items->save($item);
-              echo "<div>".$item->content."</div>";
+              echo '<div id="item-'.$item->id.'">'.$item->content.'<input type="button" value="削除する" id="content-delete" data-id="'.$item->id.'"></div>';
               exit;
           }
           return;
       }
 
-  public function delete($id = null){
+  public function delete(){
             if($this->request->is('ajax')) {
-               $item = $this->Items->get($id);
-        return $this->redirect(['action'=>'posts.delete']);
+              $item = $this->Items->get($this->request->getData('id'));
+              $this->Items->delete($item);
       }
+       return;
     }
 
 

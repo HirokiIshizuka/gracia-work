@@ -27,7 +27,6 @@ $this->assign('title', 'edit');
   <input type="button" id="save-item" value="保存する">
   <div class="item-result">
   </div>
-  <input type="button" id="content-delete" value="削除">
 </section>
 
 <script>
@@ -63,25 +62,26 @@ $(document).on('click', '#save-item', function() {
       success:function(res){
         console.log(res);
         $('textarea').val("");
-        $(".item-result").append(res);
+        $(".item-result").after(res);
       }
     });
 });
 
-$(document).on('click', 'content-delete', function() {
-  var post_id = $('input[name="id"]').val();
-  var content = $('textarea[name="content"]').val();
+$(document).on('click', '#content-delete', function() {
+ var id = $(this).data('id');
+ console.log(id);
     $.ajax({
       type:'post',
       url:"/items/delete",
       data: {
-               "post_id": post_id,
-               "content": content
+               "id": id
            },
       error:function(){
-        alert('削除に失敗しました。');
+        alert('削除失敗');
       },
       success:function(res){
+        alert('削除しました');
+        $("#item-"+id).remove();
       }
     });
 });

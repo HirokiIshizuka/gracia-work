@@ -11,5 +11,6 @@ class ItemsTable extends Table
        $this->belongsTo('Posts');
        $this->addBehavior('Timestamp');
    }
+   
 }
 ?>
